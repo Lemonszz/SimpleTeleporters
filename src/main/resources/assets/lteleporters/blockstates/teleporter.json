@@ -1,5 +1,7 @@
 {
     "variants": {
-        "normal": { "model": "lteleporters:teleporter" }
+        "normal": { "model": "lteleporters:teleporter" },
+        "on=1": { "model": "lteleporters:teleporter" },
+        "on=0": { "model": "lteleporters:teleporter" }    
     }
 }

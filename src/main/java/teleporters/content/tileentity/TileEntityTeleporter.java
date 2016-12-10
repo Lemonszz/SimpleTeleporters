@@ -6,7 +6,6 @@ import java.util.Random;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
@@ -15,7 +14,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
-import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.EnumFacing;
@@ -24,30 +22,18 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.world.storage.WorldInfo;
+import teleporters.Constants;
 import teleporters.content.items.ItemTeleportCrystal;
+import teleporters.content.items.TeleportersItems;
 
 public class TileEntityTeleporter extends TileEntityLockable 
 implements ISidedInventory, ITickable, IInventory
 {
 	public void update()
 	{
-		Random rand = this.worldObj.rand;
-		if(getStackInSlot(0) != null)
-		{
-			if(getStackInSlot(0).getItem() != Items.BOAT)
-			{
-				for(int i = 0; i < 5; i++)
-				{
-					this.worldObj.spawnParticle(EnumParticleTypes.PORTAL, pos.getX() + 0.2F + (rand.nextFloat()/2), pos.getY() + 0.4F, pos.getZ() + 0.2F + (rand.nextFloat()/2), 0, rand.nextFloat(), 0, new int[0]);
-				}
-			}
-		}
-
 		List<EntityPlayer> players = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1, pos.getY() + 1, pos.getZ() + 1));
 		for(EntityPlayer entityIn : players)
 		{
-
 			if(entityIn instanceof EntityPlayer)
 			{
 				if(entityIn.isSneaking())
@@ -82,11 +68,18 @@ implements ISidedInventory, ITickable, IInventory
 	private ItemStack[] inv;
 	public TileEntityTeleporter(){
 		inv = new ItemStack[1];
+		inv[0] = ItemStack.field_190927_a;
 	}
 
 	public void updateContainingBlockInfo()
 	{
 		super.updateContainingBlockInfo();
+	}
+	
+	public boolean hasCrystal()
+	{
+		System.out.println((this.getCrystal().getItem() == TeleportersItems.teleCrystal) + " " + this.getCrystal().getItem());
+		return this.getCrystal().getItem() == TeleportersItems.teleCrystal;
 	}
 
 	@Override
@@ -94,6 +87,17 @@ implements ISidedInventory, ITickable, IInventory
 		return inv.length;
 	}
 
+	public ItemStack getCrystal()
+	{
+		return inv[0];
+	}
+	
+	public void setCrystal(ItemStack stack)
+	{
+		inv[0] = stack;
+		System.out.println("set: " + stack.getItem() + " " + inv[0].getItem());
+	}
+	
 	@Override
 	public ItemStack getStackInSlot(int slot) {
 		return inv[slot];
@@ -196,57 +200,44 @@ implements ISidedInventory, ITickable, IInventory
 
 	@Override
 	public boolean hasCustomName() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public ITextComponent getDisplayName() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void openInventory(EntityPlayer player) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void closeInventory(EntityPlayer player) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public boolean isItemValidForSlot(int index, ItemStack stack) {
-		//worldObj.markBlockForUpdate(pos);
-
 		return stack.getItem() instanceof ItemTeleportCrystal;
 	}
 
 	@Override
 	public int getField(int id) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public void setField(int id, int value) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public int getFieldCount() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -288,20 +279,17 @@ implements ISidedInventory, ITickable, IInventory
 
 	@Override
 	public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getGuiID() {
-		// TODO Auto-generated method stub
-		return "lelele";
+		return Constants.MODID + ":unusedguiid";
 	}
 
 	@Override
 	public boolean func_191420_l()
 	{
-		// TODO Auto-generated method stub
 		return false;
 	}
 

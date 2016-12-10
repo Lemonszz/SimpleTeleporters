@@ -1,5 +1,6 @@
 package teleporters.content.items;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import teleporters.Teleporters;
 
@@ -10,7 +11,7 @@ public class TeleItem extends Item
 	{
 		this.setUnlocalizedName(name);
 		this.name = name;
-		this.setCreativeTab(Teleporters.tab);
+		this.setCreativeTab(CreativeTabs.TRANSPORTATION);
 		TeleportersItems.itemList.add(this);
 	}
 	

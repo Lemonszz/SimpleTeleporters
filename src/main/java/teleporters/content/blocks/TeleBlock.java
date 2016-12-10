@@ -2,6 +2,7 @@ package teleporters.content.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
 import teleporters.Teleporters;
 
 public class TeleBlock extends Block
@@ -11,7 +12,7 @@ public class TeleBlock extends Block
 		super(materialIn);
 		
 		this.setUnlocalizedName(name);
-		this.setCreativeTab(Teleporters.tab);
+		this.setCreativeTab(CreativeTabs.TRANSPORTATION);
 		TeleportersBlocks.blockList.add(this);
 	}
 

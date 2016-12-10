@@ -20,3 +20,8 @@ build
 # other
 eclipse
 run
+/gradlew.bat
+/gradlew
+/gradle.properties
+/build.gradle
+/gradle/
