@@ -15,7 +15,7 @@ public class Teleporters{
 	@Instance(value = Constants.MODID)
 	public static Teleporters instance;
 
-	@SidedProxy(clientSide="teleporters.proxy.ClientProxy", serverSide="teleporters.proxy.CommonProxy")
+	@SidedProxy(clientSide="lemons.party.teleporters.proxy.ClientProxy", serverSide="lemons.party.teleporters.proxy.CommonProxy")
 	public static CommonProxy proxy;
 	
 	@EventHandler
