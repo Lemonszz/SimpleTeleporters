@@ -78,7 +78,6 @@ implements ISidedInventory, ITickable, IInventory
 	
 	public boolean hasCrystal()
 	{
-		System.out.println((this.getCrystal().getItem() == TeleportersItems.teleCrystal) + " " + this.getCrystal().getItem());
 		return this.getCrystal().getItem() == TeleportersItems.teleCrystal;
 	}
 
@@ -95,7 +94,6 @@ implements ISidedInventory, ITickable, IInventory
 	public void setCrystal(ItemStack stack)
 	{
 		inv[0] = stack;
-		System.out.println("set: " + stack.getItem() + " " + inv[0].getItem());
 	}
 	
 	@Override
