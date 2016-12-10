@@ -25,6 +25,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import teleporters.content.config.ModConfig;
 import teleporters.content.items.ItemTeleportCrystal;
 import teleporters.content.tileentity.TileEntityTeleporter;
 
@@ -83,7 +84,7 @@ public class BlockTeleporter extends TeleBlockContainer
     {
 		if(state.getValue(ON) == 1)
 		{
-			for(int i = 0; i < 5; i++)
+			for(int i = 0; i < ModConfig.CONFIG_PARTICLE_AMT_BLOCK; i++)
 			{
 				worldIn.spawnParticle(EnumParticleTypes.PORTAL, pos.getX() + 0.2F + (rand.nextFloat()/2), pos.getY() + 0.4F, pos.getZ() + 0.2F + (rand.nextFloat()/2), 0, rand.nextFloat(), 0, new int[0]);
 			}
