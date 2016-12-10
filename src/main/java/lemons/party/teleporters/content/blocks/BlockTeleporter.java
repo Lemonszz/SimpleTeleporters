@@ -1,7 +1,10 @@
-package teleporters.content.blocks;
+package lemons.party.teleporters.content.blocks;
 
 import java.util.Random;
 
+import lemons.party.teleporters.content.config.ModConfig;
+import lemons.party.teleporters.content.items.ItemTeleportCrystal;
+import lemons.party.teleporters.content.tileentity.TileEntityTeleporter;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
@@ -25,9 +28,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import teleporters.content.config.ModConfig;
-import teleporters.content.items.ItemTeleportCrystal;
-import teleporters.content.tileentity.TileEntityTeleporter;
 
 public class BlockTeleporter extends TeleBlockContainer
 {

@@ -1,8 +1,11 @@
-package teleporters.content.tileentity;
+package lemons.party.teleporters.content.tileentity;
 
 import java.util.List;
 import java.util.Random;
 
+import lemons.party.teleporters.Constants;
+import lemons.party.teleporters.content.items.ItemTeleportCrystal;
+import lemons.party.teleporters.content.items.TeleportersItems;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -22,9 +25,6 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
-import teleporters.Constants;
-import teleporters.content.items.ItemTeleportCrystal;
-import teleporters.content.items.TeleportersItems;
 
 public class TileEntityTeleporter extends TileEntityLockable 
 implements ISidedInventory, ITickable, IInventory

@@ -1,10 +1,10 @@
-package teleporters.proxy;
+package lemons.party.teleporters.proxy;
 
+import lemons.party.teleporters.content.blocks.TeleportersBlocks;
+import lemons.party.teleporters.content.items.TeleportersItems;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import teleporters.content.blocks.TeleportersBlocks;
-import teleporters.content.items.TeleportersItems;
 
 public class ClientProxy extends CommonProxy
 {

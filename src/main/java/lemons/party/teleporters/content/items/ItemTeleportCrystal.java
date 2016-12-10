@@ -1,4 +1,4 @@
-package teleporters.content.items;
+package lemons.party.teleporters.content.items;
 
 import java.util.List;
 

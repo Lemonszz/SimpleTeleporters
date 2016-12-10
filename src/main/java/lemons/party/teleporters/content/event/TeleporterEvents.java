@@ -1,5 +1,7 @@
-package teleporters.content.event;
+package lemons.party.teleporters.content.event;
 
+import lemons.party.teleporters.content.items.ItemTeleportCrystal;
+import lemons.party.teleporters.content.items.TeleportersItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -10,8 +12,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import teleporters.content.items.ItemTeleportCrystal;
-import teleporters.content.items.TeleportersItems;
 
 public class TeleporterEvents 
 {

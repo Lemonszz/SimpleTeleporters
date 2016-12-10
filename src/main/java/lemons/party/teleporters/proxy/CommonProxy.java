@@ -1,5 +1,10 @@
-package teleporters.proxy;
+package lemons.party.teleporters.proxy;
 
+import lemons.party.teleporters.content.blocks.TeleportersBlocks;
+import lemons.party.teleporters.content.config.ModConfig;
+import lemons.party.teleporters.content.event.TeleporterEvents;
+import lemons.party.teleporters.content.items.TeleportersItems;
+import lemons.party.teleporters.content.tileentity.TileEntityTeleporter;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -9,11 +14,6 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import teleporters.content.blocks.TeleportersBlocks;
-import teleporters.content.config.ModConfig;
-import teleporters.content.event.TeleporterEvents;
-import teleporters.content.items.TeleportersItems;
-import teleporters.content.tileentity.TileEntityTeleporter;
 
 public class CommonProxy
 {

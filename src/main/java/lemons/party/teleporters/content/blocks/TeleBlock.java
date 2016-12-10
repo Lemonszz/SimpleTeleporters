@@ -1,9 +1,9 @@
-package teleporters.content.blocks;
+package lemons.party.teleporters.content.blocks;
 
+import lemons.party.teleporters.Teleporters;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
-import teleporters.Teleporters;
 
 public class TeleBlock extends Block
 {

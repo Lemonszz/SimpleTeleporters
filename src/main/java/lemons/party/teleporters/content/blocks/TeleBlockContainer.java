@@ -1,4 +1,4 @@
-package teleporters.content.blocks;
+package lemons.party.teleporters.content.blocks;
 
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;

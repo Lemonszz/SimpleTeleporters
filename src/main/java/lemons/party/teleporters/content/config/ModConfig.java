@@ -1,4 +1,4 @@
-package teleporters.content.config;
+package lemons.party.teleporters.content.config;
 
 import net.minecraftforge.common.config.Configuration;
 

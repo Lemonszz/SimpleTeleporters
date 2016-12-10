@@ -1,14 +1,14 @@
-package teleporters.content.items;
+package lemons.party.teleporters.content.items;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import lemons.party.teleporters.Constants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import teleporters.Constants;
 
 public class TeleportersItems
 {

@@ -1,8 +1,8 @@
-package teleporters.content.items;
+package lemons.party.teleporters.content.items;
 
+import lemons.party.teleporters.Teleporters;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import teleporters.Teleporters;
 
 public class TeleItem extends Item
 {
