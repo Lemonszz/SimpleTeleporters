@@ -1,16 +1,18 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
+  "modid": "lteleporters",
+  "name": "Lemon's Simple Teleporters",
+  "description": "A simple mod for teleportation!",
+  "version": "1.1.4",
+  "mcversion": "1.11",
   "url": "",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
-  "logoFile": "",
+  "authorList": ["Lemonszz"],
+  "credits": "",
+  "logoFile": "/assets/lteleporters/logo.png",
+  "requiredMods": [ ],
   "screenshots": [],
-  "dependencies": []
+  "dependencies": [],
+  "useDependencyInformation": true
 }
 ]
