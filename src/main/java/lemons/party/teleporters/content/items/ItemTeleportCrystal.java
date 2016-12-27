@@ -44,10 +44,10 @@ public class ItemTeleportCrystal extends TeleItem {
 
 			if(!worldIn.isRemote)
 			{
-				playerIn.addChatComponentMessage(new TextComponentTranslation(TextFormatting.GREEN + "This crystal is linked at:" + " " + 
+				playerIn.sendStatusMessage(new TextComponentTranslation(TextFormatting.GREEN + "This crystal is linked at:" + " " + 
 						tags.getInteger("x") + ", " +
 						tags.getInteger("y") + ", " +
-						tags.getInteger("z")), false);
+						tags.getInteger("z")), true);
 			}
 			playerIn.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1, 1);
 
@@ -63,13 +63,14 @@ public class ItemTeleportCrystal extends TeleItem {
 			NBTTagCompound tags = stack.getTagCompound();
 			if(tags == null)
 			{
-				playerIn.addChatComponentMessage(new TextComponentTranslation(TextFormatting.RED + "This crystal is unlinked."), false);
-			}else
+				playerIn.sendStatusMessage(new TextComponentTranslation(TextFormatting.RED + "This crystal is unlinked."), true);
+			}
+			else
 			{
-				playerIn.addChatComponentMessage(new TextComponentTranslation(TextFormatting.GREEN + "This crystal is linked at:" + " " + 
+				playerIn.sendStatusMessage(new TextComponentTranslation(TextFormatting.GREEN + "This crystal is linked at:" + " " + 
 						tags.getInteger("x") + ", " +
 						tags.getInteger("y") + ", " +
-						tags.getInteger("z")), false);
+						tags.getInteger("z")), true);
 			}
 		}
 		return new ActionResult(EnumActionResult.PASS, stack);

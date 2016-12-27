@@ -55,7 +55,7 @@ public class BlockTeleporter extends TeleBlockContainer
 			playerIn.playSound(SoundEvents.ENTITY_ARROW_SHOOT, 0.5F, 0.4F / (worldIn.rand.nextFloat() * 0.4F + 0.8F));
 			worldIn.setBlockState(pos, state.withProperty(ON, 0));
 			tele = (TileEntityTeleporter) worldIn.getTileEntity(pos);
-			tele.setCrystal(ItemStack.field_190927_a);
+			tele.setCrystal(ItemStack.EMPTY);
 			return true;
 		}
 		else
@@ -69,7 +69,8 @@ public class BlockTeleporter extends TeleBlockContainer
 					worldIn.setBlockState(pos, state.withProperty(ON, 1));
 					tele = (TileEntityTeleporter) worldIn.getTileEntity(pos);
 					tele.setCrystal(stack.copy());
-					stack.func_190918_g(1);
+					//stack.func_190918_g(1);
+					stack.shrink(1);
 					return true;
 				}
 			}

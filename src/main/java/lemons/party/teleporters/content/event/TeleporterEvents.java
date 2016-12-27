@@ -21,25 +21,25 @@ public class TeleporterEvents
 	public void onPlayerTickClient(PlayerTickEvent event)
 	{
 		Minecraft mc = Minecraft.getMinecraft();
-		if(mc.thePlayer != null)
+		if(mc.player != null)
 		{
 			for(EnumHand hnd : EnumHand.values())
 			{
-				ItemStack stack = mc.thePlayer.getHeldItem(hnd);
+				ItemStack stack = mc.player.getHeldItem(hnd);
 				if(stack.getItem() == TeleportersItems.teleCrystal)
 				{
 					NBTTagCompound tags = stack.getTagCompound();
 					if(tags != null)
 					{
-						if(tags.getInteger("dim") == mc.thePlayer.dimension)
+						if(tags.getInteger("dim") == mc.player.dimension)
 						{
 							BlockPos telePos = new BlockPos(tags.getInteger("x"), tags.getInteger("y"), tags.getInteger("z"));
-							if(mc.thePlayer.getDistance(telePos.getX(), telePos.getY(), telePos.getZ()) < 15)
+							if(mc.player.getDistance(telePos.getX(), telePos.getY(), telePos.getZ()) < 15)
 							{
-								mc.theWorld.spawnParticle(EnumParticleTypes.TOWN_AURA,
-										telePos.getX() + (1 - mc.theWorld.rand.nextFloat()),
-										telePos.getY() + (1 - mc.theWorld.rand.nextFloat()),
-										telePos.getZ() + (1 - mc.theWorld.rand.nextFloat())
+								mc.world.spawnParticle(EnumParticleTypes.TOWN_AURA,
+										telePos.getX() + (1 - mc.world.rand.nextFloat()),
+										telePos.getY() + (1 - mc.world.rand.nextFloat()),
+										telePos.getZ() + (1 - mc.world.rand.nextFloat())
 										, 0, 0, 0, new int[0]);
 							}
 						}

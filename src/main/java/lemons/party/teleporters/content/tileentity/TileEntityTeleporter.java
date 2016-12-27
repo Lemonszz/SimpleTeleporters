@@ -31,16 +31,16 @@ implements ISidedInventory, ITickable, IInventory
 {
 	public void update()
 	{
-		List<EntityPlayer> players = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1, pos.getY() + 1, pos.getZ() + 1));
+		List<EntityPlayer> players = this.world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1, pos.getY() + 1, pos.getZ() + 1));
 		for(EntityPlayer entityIn : players)
 		{
 			if(entityIn instanceof EntityPlayer)
 			{
 				if(entityIn.isSneaking())
 				{
-					if(worldObj.getTileEntity(pos) != null && worldObj.getTileEntity(pos) instanceof TileEntityTeleporter)
+					if(world.getTileEntity(pos) != null && world.getTileEntity(pos) instanceof TileEntityTeleporter)
 					{
-						TileEntityTeleporter tile = (TileEntityTeleporter)worldObj.getTileEntity(pos);
+						TileEntityTeleporter tile = (TileEntityTeleporter)world.getTileEntity(pos);
 						if(tile.getStackInSlot(0) != null)
 						{
 							NBTTagCompound tag = tile.getStackInSlot(0).getTagCompound();
@@ -48,7 +48,7 @@ implements ISidedInventory, ITickable, IInventory
 							{
 								if(tag.getInteger("dim") == entityIn.dimension)
 								{
-									if(!worldObj.isRemote)
+									if(!world.isRemote)
 									{
 										EntityPlayerMP emp = (EntityPlayerMP)entityIn;
 										emp.connection.setPlayerLocation(tag.getInteger("x") + 0.5F, tag.getInteger("y") + 1, tag.getInteger("z") + 0.5F, emp.rotationYaw, emp.prevRotationPitch);
@@ -68,7 +68,7 @@ implements ISidedInventory, ITickable, IInventory
 	private ItemStack[] inv;
 	public TileEntityTeleporter(){
 		inv = new ItemStack[1];
-		inv[0] = ItemStack.field_190927_a;
+		inv[0] = ItemStack.EMPTY;
 	}
 
 	public void updateContainingBlockInfo()
@@ -104,8 +104,8 @@ implements ISidedInventory, ITickable, IInventory
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
 		inv[slot] = stack;
-		if (stack != null && stack.func_190916_E() > getInventoryStackLimit()) {
-			stack.func_190920_e(getInventoryStackLimit());
+		if (stack != null && stack.getCount() > getInventoryStackLimit()) {
+			stack.setCount(getInventoryStackLimit());
 		}    
 		this.markDirty();
 
@@ -116,7 +116,7 @@ implements ISidedInventory, ITickable, IInventory
 		ItemStack stack = getStackInSlot(slot);
 		if (stack != null)
 		{
-			if (stack.func_190916_E() <= amt) 
+			if (stack.getCount() <= amt) 
 			{
 				setInventorySlotContents(slot, null);
 				this.markDirty();
@@ -124,7 +124,7 @@ implements ISidedInventory, ITickable, IInventory
 			else 
 			{
 				stack = stack.splitStack(amt);
-				if (stack.func_190916_E() == 0) {
+				if (stack.getCount() == 0) {
 					setInventorySlotContents(slot, null);
 					this.markDirty();
 
@@ -137,12 +137,6 @@ implements ISidedInventory, ITickable, IInventory
 	@Override
 	public int getInventoryStackLimit() {
 		return 1;
-	}
-
-	@Override
-	public boolean isUseableByPlayer(EntityPlayer player) {
-		return worldObj.getTileEntity(new BlockPos(this.pos.getX(), this.pos.getY(), this.pos.getZ())) == this &&
-				player.getDistanceSq(this.pos.getX() + 0.5, this.pos.getY() + 0.5, this.pos.getZ() + 0.5) < 64;
 	}
 
 	@Override
@@ -286,10 +280,13 @@ implements ISidedInventory, ITickable, IInventory
 	}
 
 	@Override
-	public boolean func_191420_l()
-	{
+	public boolean isEmpty() {
 		return false;
 	}
 
-
+	@Override
+	public boolean isUsableByPlayer(EntityPlayer player) {
+		return world.getTileEntity(new BlockPos(this.pos.getX(), this.pos.getY(), this.pos.getZ())) == this &&
+				player.getDistanceSq(this.pos.getX() + 0.5, this.pos.getY() + 0.5, this.pos.getZ() + 0.5) < 64;
+	}
 }
