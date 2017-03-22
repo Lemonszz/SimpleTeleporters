@@ -22,7 +22,7 @@ public class ItemTeleportCrystal extends TeleItem {
 	public ItemTeleportCrystal() {
 		super("endercrystal");
 
-		this.setMaxStackSize(1);
+		this.setMaxStackSize(64);
 	}
 
     public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float x, float y, float z)
@@ -41,6 +41,7 @@ public class ItemTeleportCrystal extends TeleItem {
 			tags.setInteger("y", offPos.getY());
 			tags.setInteger("z", offPos.getZ());
 			tags.setInteger("dim", playerIn.dimension);
+			tags.setFloat("direction", playerIn.rotationYaw);
 
 			if(!worldIn.isRemote)
 			{

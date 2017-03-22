@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import lemons.party.teleporters.Constants;
+import lemons.party.teleporters.content.config.ModConfig;
 import lemons.party.teleporters.content.items.ItemTeleportCrystal;
 import lemons.party.teleporters.content.items.TeleportersItems;
 import net.minecraft.entity.player.EntityPlayer;
@@ -43,18 +44,25 @@ implements ISidedInventory, ITickable, IInventory
 						TileEntityTeleporter tile = (TileEntityTeleporter)world.getTileEntity(pos);
 						if(tile.getStackInSlot(0) != null)
 						{
+
 							NBTTagCompound tag = tile.getStackInSlot(0).getTagCompound();
 							if(tag != null)
 							{
 								if(tag.getInteger("dim") == entityIn.dimension)
 								{
+									entityIn.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1, 1);
 									if(!world.isRemote)
 									{
 										EntityPlayerMP emp = (EntityPlayerMP)entityIn;
-										emp.connection.setPlayerLocation(tag.getInteger("x") + 0.5F, tag.getInteger("y") + 1, tag.getInteger("z") + 0.5F, emp.rotationYaw, emp.prevRotationPitch);
+
+										float pYaw = emp.rotationYaw;
+										if(ModConfig.CONFIG_USE_DIRECTION && tag.hasKey("direction"))
+										{
+											pYaw = tag.getFloat("direction");
+										}
+										emp.connection.setPlayerLocation(tag.getInteger("x") + 0.5F, tag.getInteger("y") + 1, tag.getInteger("z") + 0.5F, pYaw, emp.prevRotationPitch);
 										entityIn.motionY = 0.5F;
 									}
-									entityIn.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1, 1);
 									entityIn.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1, 1);
 								}
 							}
@@ -93,6 +101,7 @@ implements ISidedInventory, ITickable, IInventory
 	
 	public void setCrystal(ItemStack stack)
 	{
+		stack.setCount(1);
 		inv[0] = stack;
 	}
 	

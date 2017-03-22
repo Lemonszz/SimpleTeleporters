@@ -2,6 +2,7 @@ package lemons.party.teleporters.proxy;
 
 import lemons.party.teleporters.content.blocks.TeleportersBlocks;
 import lemons.party.teleporters.content.config.ModConfig;
+import lemons.party.teleporters.content.crafting.PositionDupeRecipe;
 import lemons.party.teleporters.content.event.TeleporterEvents;
 import lemons.party.teleporters.content.items.TeleportersItems;
 import lemons.party.teleporters.content.tileentity.TileEntityTeleporter;
@@ -53,6 +54,8 @@ public class CommonProxy
 			break;
 		}
 		
+		GameRegistry.addRecipe(new PositionDupeRecipe());
+		GameRegistry.addShapelessRecipe(new ItemStack(TeleportersItems.teleCrystal), TeleportersItems.teleCrystal);
 		GameRegistry.addSmelting(Items.ENDER_EYE, new ItemStack(TeleportersItems.teleCrystal), 0.1f);
 	}
 

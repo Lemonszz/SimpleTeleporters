@@ -6,6 +6,7 @@ public class ModConfig
 {
 	public static int CONFIG_PARTICLE_AMT_BLOCK;
 	public static int CONFIG_RECIPE_HARDNESS;
+	public static boolean CONFIG_USE_DIRECTION;
 	
 	public static void loadConfig(Configuration config)
 	{
@@ -13,6 +14,7 @@ public class ModConfig
 		
 		CONFIG_PARTICLE_AMT_BLOCK = config.getInt("Teleporter Particle Amount", "Block", 5, 0, Integer.MAX_VALUE, "The amount of portal particles that will come out of the teleporter every display tick");
 		CONFIG_RECIPE_HARDNESS = config.getInt("Teleporter Crafting Difficulty", "Crafting", 0, 0, 3, "The difficulty of crafting a teleporter block. 0 = Quartz, 1 = End Stone, 2 = Nether Star, 3 = Uncraftable");
+		CONFIG_USE_DIRECTION = config.getBoolean("Teleportation Use Crystal Direction", "Teleportation", true, "After teleporting, the player will face the direction they were facing when linking the crystal");
 		
 		config.save();
 	}
