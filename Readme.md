@@ -12,6 +12,7 @@ With this crystal you can sneak right click a block to create a link at a positi
 
 
 You will now need to craft a "Teleporter" in a crafting table
+
 ![simple_teleporters_02.png](https://github.com/jarryDk/SimpleTeleporters/raw/master/images/simple_teleporters_02.png "simple_teleporters_02.png")
 
 Place this Teleporter on the ground and use the Ender Crystal you made earlier in it by right clicking with it in your hand. You can freely take the crystal out and put it back in.
