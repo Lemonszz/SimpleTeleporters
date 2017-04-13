@@ -49,6 +49,6 @@ A) Yes, you don't need to ask.
 
 ## Links to minecraft.curseforge.com
 
-[simple-teleporters description](https://minecraft.curseforge.com/projects/simple-teleporters)
+[Simple Teleporters description](https://minecraft.curseforge.com/projects/simple-teleporters)
 
-[simple-teleporters files](https://minecraft.curseforge.com/projects/simple-teleporters/files)
+[Simple Teleporters files](https://minecraft.curseforge.com/projects/simple-teleporters/files)
