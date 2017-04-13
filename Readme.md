@@ -35,14 +35,17 @@ Q) Can I use this mod in my modpack?
 A) Yes, as long as you provide a link back to either this page or the Minecraft Forums page and appropriate credit is given.
 
 
+
 Q) Can I reupload this mod on my website? 
 
 A) No, the only place to download this mod is this Curse page
 
 
+
 Q) Can I make a video about this mod or with this mod in it?
 
 A) Yes, you don't need to ask.
+
 
 ## Links to minecraft.curseforge.com
 
