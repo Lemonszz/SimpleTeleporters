@@ -26,6 +26,10 @@ public class PositionDupeRecipe implements IRecipe
 
             if (!itemstack1.isEmpty())
             {
+                if(itemstack1.getItem() != TeleportersItems.teleCrystal)
+                {
+                    return false;
+                }
                 if (itemstack1.getItem() == TeleportersItems.teleCrystal && itemstack1.getTagCompound() != null)
                 {
                     if (!itemstack.isEmpty())
@@ -64,6 +68,10 @@ public class PositionDupeRecipe implements IRecipe
 
             if (!itemstack1.isEmpty())
             {
+				if(itemstack1.getItem() != TeleportersItems.teleCrystal)
+				{
+					return ItemStack.EMPTY;
+				}
                 if (itemstack1.getItem() == TeleportersItems.teleCrystal && itemstack1.getTagCompound() != null)
                 {
                     if (!itemstack.isEmpty())
@@ -87,7 +95,12 @@ public class PositionDupeRecipe implements IRecipe
 
         if (!itemstack.isEmpty() && itemstack.hasTagCompound() && i >= 1 && ItemWrittenBook.getGeneration(itemstack) < 2)
         {
-            ItemStack itemstack2 = new ItemStack(TeleportersItems.teleCrystal, i);
+        	int totalAmount = i;
+        	if(totalAmount >= 1)
+			{
+				totalAmount += 1;
+			}
+            ItemStack itemstack2 = new ItemStack(TeleportersItems.teleCrystal, totalAmount);
             itemstack2.setTagCompound(itemstack.getTagCompound().copy());
             
             if (itemstack.hasDisplayName())
@@ -119,7 +132,7 @@ public class PositionDupeRecipe implements IRecipe
     public NonNullList<ItemStack> getRemainingItems(InventoryCrafting inv)
     {
         NonNullList<ItemStack> nonnulllist = NonNullList.<ItemStack>withSize(inv.getSizeInventory(), ItemStack.EMPTY);
-
+/*
         for (int i = 0; i < nonnulllist.size(); ++i)
         {
             ItemStack itemstack = inv.getStackInSlot(i);
@@ -132,7 +145,7 @@ public class PositionDupeRecipe implements IRecipe
                 break;
             }
         }
-
+*/
         return nonnulllist;
     }
 }
