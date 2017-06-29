@@ -8,17 +8,19 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+@Mod.EventBusSubscriber
 public class TeleporterEvents 
 {
 	
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
-	public void onPlayerTickClient(PlayerTickEvent event)
+	public static void onPlayerTickClient(PlayerTickEvent event)
 	{
 		Minecraft mc = Minecraft.getMinecraft();
 		if(mc.player != null)

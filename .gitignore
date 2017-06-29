@@ -23,5 +23,6 @@ run
 /gradlew.bat
 /gradlew
 /gradle.properties
-/build.gradle
 /gradle/
+
+classes

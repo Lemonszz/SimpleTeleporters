@@ -1,0 +1,15 @@
+{
+  "result": {
+    "item": "lteleporters:endercrystal",
+    "count": 1
+  },
+  "pattern": [
+    "C"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "C": {
+      "item": "lteleporters:endercrystal"
+    }
+  }
+}

@@ -2,6 +2,7 @@ package lemons.party.teleporters.content.items;
 
 import java.util.List;
 
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -16,6 +17,8 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
 
 public class ItemTeleportCrystal extends TeleItem {
 
@@ -56,9 +59,11 @@ public class ItemTeleportCrystal extends TeleItem {
 		}
 		return EnumActionResult.FAIL;
 	}
-    
-    public ActionResult<ItemStack> onItemRightClick(ItemStack stack, World worldIn, EntityPlayer playerIn, EnumHand hand)
+
+	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
+		ItemStack stack = playerIn.getHeldItem(hand);
+
 		if(!playerIn.isSneaking() && hand == EnumHand.MAIN_HAND)
 		{
 			NBTTagCompound tags = stack.getTagCompound();
@@ -78,7 +83,7 @@ public class ItemTeleportCrystal extends TeleItem {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
+	public void addInformation(ItemStack stack, @Nullable World playerIn, List<String> tooltip, ITooltipFlag advanced)
 	{
 		NBTTagCompound tags = stack.getTagCompound();
 		if(tags == null)

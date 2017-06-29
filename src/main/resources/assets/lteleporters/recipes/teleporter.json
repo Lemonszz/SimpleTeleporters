@@ -1,0 +1,25 @@
+{
+  "result": {
+    "item": "lteleporters:teleporter",
+    "count": 1
+  },
+  "pattern": [
+    " G ",
+    "CEC",
+    "EEE"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "E": {
+      "type": "forge:ore_dict",
+      "ore" : "blockQuartz"
+    },
+    "G": {
+      "type": "forge:ore_dict",
+      "ore" : "blockGold"
+    },
+    "C": {
+      "item": "lteleporters:endercrystal"
+    }
+  }
+}

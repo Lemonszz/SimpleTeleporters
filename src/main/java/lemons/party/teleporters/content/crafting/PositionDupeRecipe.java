@@ -8,9 +8,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemWrittenBook;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-public class PositionDupeRecipe implements IRecipe
+import javax.annotation.Nullable;
+
+public class PositionDupeRecipe  extends net.minecraftforge.registries.IForgeRegistryEntry.Impl<IRecipe> implements IRecipe
 {
     /**
      * Used to check if a recipe matches current crafting inventory
@@ -116,6 +119,14 @@ public class PositionDupeRecipe implements IRecipe
         }
     }
 
+    @Override
+
+    public boolean func_194133_a(int p_194133_1_, int p_194133_2_)
+    {
+        return p_194133_1_ >= 1 && p_194133_2_ >= 1;
+    }
+
+
     /**
      * Returns the size of the recipe area
      */
@@ -147,5 +158,10 @@ public class PositionDupeRecipe implements IRecipe
         }
 */
         return nonnulllist;
+    }
+
+    public boolean func_192399_d()
+    {
+        return true;
     }
 }
