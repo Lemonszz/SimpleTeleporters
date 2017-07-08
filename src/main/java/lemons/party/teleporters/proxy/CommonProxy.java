@@ -33,7 +33,7 @@ public class CommonProxy
 		event.getRegistry().register(new PositionDupeRecipe().setRegistryName(Constants.MODID, "posdupe"));
 	}
 
-	public void init(FMLInitializationEvent event) 
+	public void init(FMLInitializationEvent event)
 	{
 		GameRegistry.addSmelting(Items.ENDER_EYE, new ItemStack(TeleportersItems.teleCrystal), 0.1f);
 	}

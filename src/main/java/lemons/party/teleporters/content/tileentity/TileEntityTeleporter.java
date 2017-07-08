@@ -27,8 +27,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 
-public class TileEntityTeleporter extends TileEntityLockable 
-implements ISidedInventory, ITickable, IInventory
+public class TileEntityTeleporter extends TileEntityLockable implements ISidedInventory, ITickable, IInventory
 {
 	public void update()
 	{
@@ -41,11 +40,9 @@ implements ISidedInventory, ITickable, IInventory
 				{
 					if(world.getTileEntity(pos) != null && world.getTileEntity(pos) instanceof TileEntityTeleporter)
 					{
-						TileEntityTeleporter tile = (TileEntityTeleporter)world.getTileEntity(pos);
-						if(tile.getStackInSlot(0) != null)
+						if(!getStackInSlot(0).isEmpty())
 						{
-
-							NBTTagCompound tag = tile.getStackInSlot(0).getTagCompound();
+							NBTTagCompound tag = getStackInSlot(0).getTagCompound();
 							if(tag != null)
 							{
 								if(tag.getInteger("dim") == entityIn.dimension)
@@ -74,7 +71,9 @@ implements ISidedInventory, ITickable, IInventory
 	}
 
 	private ItemStack[] inv;
-	public TileEntityTeleporter(){
+
+	public TileEntityTeleporter()
+	{
 		inv = new ItemStack[1];
 		inv[0] = ItemStack.EMPTY;
 	}
@@ -113,7 +112,7 @@ implements ISidedInventory, ITickable, IInventory
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
 		inv[slot] = stack;
-		if (stack != null && stack.getCount() > getInventoryStackLimit()) {
+		if (!stack.isEmpty() && stack.getCount() > getInventoryStackLimit()) {
 			stack.setCount(getInventoryStackLimit());
 		}    
 		this.markDirty();
@@ -123,18 +122,18 @@ implements ISidedInventory, ITickable, IInventory
 	@Override
 	public ItemStack decrStackSize(int slot, int amt) {
 		ItemStack stack = getStackInSlot(slot);
-		if (stack != null)
+		if (!stack.isEmpty())
 		{
 			if (stack.getCount() <= amt) 
 			{
-				setInventorySlotContents(slot, null);
+				setInventorySlotContents(slot, ItemStack.EMPTY);
 				this.markDirty();
 			} 
 			else 
 			{
 				stack = stack.splitStack(amt);
 				if (stack.getCount() == 0) {
-					setInventorySlotContents(slot, null);
+					setInventorySlotContents(slot, ItemStack.EMPTY);
 					this.markDirty();
 
 				}
@@ -153,17 +152,20 @@ implements ISidedInventory, ITickable, IInventory
 		super.readFromNBT(tagCompound);
 
 		NBTTagList tagList = tagCompound.getTagList("Inventory", 10);
-		for (int i = 0; i < tagList.tagCount(); i++) {
+		for (int i = 0; i < tagList.tagCount(); i++)
+		{
 			NBTTagCompound tag = (NBTTagCompound) tagList.getCompoundTagAt(i);
 			byte slot = tag.getByte("Slot");
-			if (slot >= 0 && slot < inv.length) {
+			if (slot >= 0 && slot < inv.length)
+			{
 				inv[slot] = new ItemStack(tag);
 			}
 		}
 	}
 
 	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound tagCompound) {
+	public NBTTagCompound writeToNBT(NBTTagCompound tagCompound)
+	{
 
 		NBTTagList itemList = new NBTTagList();
 		for (int i = 0; i < inv.length; i++) {
@@ -264,17 +266,17 @@ implements ISidedInventory, ITickable, IInventory
 	@Override
 	public ItemStack removeStackFromSlot(int index) {
 
-		if (this.inv[index] != null)
+		if (!this.inv[index].isEmpty())
 		{
 			ItemStack itemstack = this.inv[index];
-			this.inv[index] = null;
+			this.inv[index] = ItemStack.EMPTY;
 			this.markDirty();
 
 			return itemstack;
 		}
 		else
 		{
-			return null;
+			return ItemStack.EMPTY;
 		}
 	}
 
@@ -294,7 +296,8 @@ implements ISidedInventory, ITickable, IInventory
 	}
 
 	@Override
-	public boolean isUsableByPlayer(EntityPlayer player) {
+	public boolean isUsableByPlayer(EntityPlayer player)
+	{
 		return world.getTileEntity(new BlockPos(this.pos.getX(), this.pos.getY(), this.pos.getZ())) == this &&
 				player.getDistanceSq(this.pos.getX() + 0.5, this.pos.getY() + 0.5, this.pos.getZ() + 0.5) < 64;
 	}
