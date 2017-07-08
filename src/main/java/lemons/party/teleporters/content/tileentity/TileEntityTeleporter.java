@@ -32,6 +32,7 @@ public class TileEntityTeleporter extends TileEntityLockable implements ISidedIn
 	public void update()
 	{
 		List<EntityPlayer> players = this.world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1, pos.getY() + 1, pos.getZ() + 1));
+
 		for(EntityPlayer entityIn : players)
 		{
 			if(entityIn instanceof EntityPlayer)
