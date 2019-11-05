@@ -48,7 +48,7 @@ public class BlockTeleporter extends TeleBlockContainer
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float x, float y, float z)
 	{
 		TileEntityTeleporter tele = (TileEntityTeleporter) worldIn.getTileEntity(pos);
-		if(tele.hasCrystal())
+		if(tele.hasCrystal() && !worldIn.isBlockPowered(pos))
 		{
 			ItemStack stack = tele.getCrystal().copy();
 			playerIn.inventory.addItemStackToInventory(stack);
